@@ -32,10 +32,10 @@ const checkPassword = function comparePasswords(passwordToCompare) {
 // use .call, .apply, and .bind
 
 // .call
-console.log(checkPassword.call(me, 'correcthorsebatterystaple'));
+// console.log(checkPassword.call(me, 'correcthorsebatterystaple'));
 // .apply
-console.log(checkPassword.apply(me, ['correcthorsebatterystaple', 'abc', 'def']));
+// console.log(checkPassword.apply(me, ['correcthorsebatterystaple', 'abc', 'def']));
 // .bind
-const person = new User({ username: 'timmy', password: 'ymmit' });
-const test = person.checkPassword.bind(me)
-console.log(test('correcthorsebatterystaple'));
+// const person = new User({ username: 'timmy', password: 'ymmit' });
+// const test = person.checkPassword.bind(me);
+// console.log(test('correcthorsebatterystaple'));

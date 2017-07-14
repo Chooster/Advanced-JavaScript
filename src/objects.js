@@ -5,14 +5,24 @@ const keys = (obj) => {
   // Retrieve all the names of the object's properties.
   // Return the keys as strings in an array.
   // Based on http://underscorejs.org/#keys
-  return Object.keys(obj);
+  // const arr = [];
+  // for (const prop in obj) arr.push(prop);
+  // return arr;
+  return Object.getOwnPropertyNames(obj);
 };
 
 const values = (obj) => {
   // Return all of the values of the object's own properties.
   // Ignore functions
   // http://underscorejs.org/#values
-  return Object.values(obj);
+  // return Object.values(obj);
+  let arr = [];
+  const valArr = [];
+  arr = keys(obj);
+  arr.forEach((key) => {
+    valArr.push(obj[key]);
+  });
+  return valArr;
 };
 
 const mapObject = (obj, cb) => {
