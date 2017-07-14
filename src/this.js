@@ -37,5 +37,5 @@ console.log(checkPassword.call(me, 'correcthorsebatterystaple'));
 console.log(checkPassword.apply(me, ['correcthorsebatterystaple', 'abc', 'def']));
 // .bind
 const person = new User({ username: 'timmy', password: 'ymmit' });
-const test = person.checkPassword.bind(me, 'correcthorsebatterystaple')
-console.log(test());
+const test = person.checkPassword.bind(me)
+console.log(test('correcthorsebatterystaple'));
