@@ -7,10 +7,6 @@ const each = (elements, cb) => {
   // This only needs to work with arrays.
   // based off http://underscorejs.org/#each
   for (let i = 0; i < elements.length; i++) cb(elements[i], i, elements);
-
-  // elements.forEach((property, index) => {
-  //   cb(property, index);
-  // });
 };
 
 const map = (elements, cb) => {
@@ -19,12 +15,6 @@ const map = (elements, cb) => {
   const arr = [];
   for (let i = 0; i < elements.length; i++) arr[i] = cb(elements[i]);
   return arr;
-
-  // const arr = [];
-  // elements.forEach((property, index) => {
-  //   arr[index] = cb(property);
-  // });
-  // return arr;
 };
 
 const reduce = (elements, cb, memo) => {
@@ -46,12 +36,6 @@ const find = (elements, cb) => {
   // Return `undefined` if no elements pass the truth test.
   for (let i = 0; i < elements.length; i++) if (cb(elements[i])) return elements[i];
   return 'undefined';
-
-  // let ans = 'undefined';
-  // elements.forEach((property) => {
-  //   if (cb(property)) ans = property;
-  // });
-  // return ans;
 };
 
 const filter = (elements, cb) => {
@@ -68,16 +52,21 @@ const flatten = (elements) => {
   // let arr = [];
   // for (let i = 0; i < elements.length; i++) {
   //   if (Array.isArray(elements[i])) arr = arr.concat(flatten(elements[i]));
-  //   else arr.push(elements[i]);
+  //   arr.push(elements[i]);
   // }
   // return arr;
-  let arr = [];
-  for (let i = 0; i < elements.length; i++) {
-    if (Array.isArray(elements[i])) {
-      arr = arr.concat(flatten(elements[i]));
-    } else arr.push(elements[i]);
-  }
-  return arr;
+
+  const newArray = [];
+  each(elements, (element) => {
+    if (Array.isArray(element)) {
+      const nestedArray = flatten(element);
+    }
+    nestedArray.forEach((newElement) => {
+        newArray.push(newElement);
+    }
+    newArray.push(element);
+  });
+  return newArray;
 };
 
 /* eslint-enable no-unused-vars, max-len */
